@@ -198,7 +198,6 @@ _:VulkaCompany:
       sc:subfragment:
         *:
           sc:relation: ecos:Skill
-          sc:type xml:lang="es"
           sc:selector:
             *:
               rdf:type: sc:CssSelector
