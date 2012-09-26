@@ -1,0 +1,254 @@
+sc: http://lab.gsi.dit.upm.es/scraping.rdf#
+sioc: http://rdfs.org/sioc/ns#
+rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+dc: http://purl.org/dc/elements/1.1/
+ecos: http://kmm.lboro.ac.uk/ecos/1.0#
+v: http://www.w3.org/2006/vcard/ns#
+
+_:inesindice:
+  rdf:type: sc:Fragment
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:selector:
+    *:
+      rdf:type: sc:UriSelector
+      rdf:value: "http://www.ines.org.es/view_miembros_todos"
+  sc:subfragment:
+    *:
+      sc:type: ecos:Enterprise
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".view-content .views-table tbody tr"
+      sc:identifier:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".views-field-title a"
+          sc:attribute: "href"
+      sc:subfragment:
+        *:
+          sc:type: rdf:Literal
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".views-field-counter"
+
+_:inescompany:
+  rdf:type: sc:Fragment
+  sc:type: ecos:Enterprise
+  sc:selector:
+    *:
+      rdf:type: sc:UriPatternSelector
+      rdf:value: "http://www.ines.org.es/*"
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:subfragment:
+    *:
+      sc:relation: v:VCard
+      sc:selector:
+        *:
+          rdf:type: sc:RootSelector
+      sc:subfragment:
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: v:fn
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".section h1.title"
+        *:
+          sc:relation: v:org
+          sc:selector:
+            *:
+              rdf:type: sc:RootSelector
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:organisation-unit
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".group-miembro-entidad .field-field-id-tipo-entidad .field-item"
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:organisation-name
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".section h1.title"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: v:logo
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".imagefield-field_mb_logo"
+              sc:attribute: "src"
+        *:
+          sc:relation: v:adr
+          sc:selector:
+            *:
+              rdf:type: sc:RootSelector
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:street-address
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".group-miembro-entidad .field-field-id-direccion-entidad .field-item"
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:locality
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".group-miembro-entidad .field-field-id-provincia-entidad .field-item"
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:postal-code
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".group-miembro-entidad .field-field-id-cp-entidad .field-item"
+    *:
+      sc:relation: ecos:General
+      sc:selector:
+        *:
+          rdf:type: sc:RootSelector
+      sc:subfragment:
+        *:
+          sc:relation: ecos:CompanyName
+          sc:selector:
+            *:
+              rdf:type: sc:RootSelector
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:name
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".section h1.title"
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:uri
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: ".group-miembro-entidad .field-field-id-web-entidad .field-item"
+        *:
+          sc:relation: ecos:Address
+          sc:selector:
+            *:
+              rdf:type: sc:RootSelector
+          sc:subfragment:
+            *:
+              sc:relation: v:VCard
+              sc:selector:
+                *:
+                  rdf:type: sc:RootSelector
+              sc:subfragment:
+                *:
+                  sc:relation: v:adr
+                  sc:selector:
+                    *:
+                      rdf:type: sc:RootSelector
+                  sc:subfragment:
+                    *:
+                      sc:type:     rdf:Literal
+                      sc:relation: v:street-address
+                      sc:selector:
+                        *:
+                          rdf:type: sc:CssSelector
+                          rdf:value: ".group-miembro-entidad .field-field-id-direccion-entidad .field-item"
+                    *:
+                      sc:type:     rdf:Literal
+                      sc:relation: v:locality
+                      sc:selector:
+                        *:
+                          rdf:type: sc:CssSelector
+                          rdf:value: ".group-miembro-entidad .field-field-id-provincia-entidad .field-item"
+                    *:
+                      sc:type:     rdf:Literal
+                      sc:relation: v:postal-code
+                      sc:selector:
+                        *:
+                          rdf:type: sc:CssSelector
+                          rdf:value: ".group-miembro-entidad .field-field-id-cp-entidad .field-item"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ecos:summary
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".group-miembro-entidad .field-field-id-actividad-entidad .field-item"
+              sc:format: sc:Html
+    *:
+      sc:relation: ecos:Specific
+      sc:selector:
+        *:
+          rdf:type: sc:RootSelector
+      sc:subfragment:
+        *:
+          sc:relation: ecos:Skill
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".field-field-id-competencias .field-item"
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:detail
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: "p"
+                  sc:format: sc:Html
+      sc:subfragment:
+        *:
+          sc:relation: ecos:Skill
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".group-miebro-perfil-ui3 .field-field-id-tecnologias .field-item"          
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:detail
+              sc:selector:
+                *:
+                  rdf:type: sc:RootSelector
+                  sc:format: sc:Plain
+      sc:subfragment:
+        *:
+          sc:relation: ecos:Skill
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".group-miebro-perfil-ui3 .field-field-id-sectores .field-item"          
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:detail
+              sc:selector:
+                *:
+                  rdf:type: sc:RootSelector
+                  sc:format: sc:Plain
+        *:
+          sc:relation: ecos:Plan 
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".field-field-id-desafios .field-item"
+          sc:subfragment:
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: ecos:detail
+              sc:selector:
+                *:
+                  rdf:type: sc:CssSelector
+                  rdf:value: "p"
+                  sc:format: sc:Plain

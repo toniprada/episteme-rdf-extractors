@@ -1,0 +1,219 @@
+sc: http://lab.gsi.dit.upm.es/scraping.rdf#
+sioc: http://rdfs.org/sioc/ns#
+rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+dc: http://purl.org/dc/elements/1.1/
+ifttt: http://ifttt.com/
+
+_:ChannelsIndex:
+  rdf:type: sc:Fragment
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:selector:
+    *:
+      rdf:type: sc:UriSelector
+      rdf:value: "http://ifttt.com/channels"
+  sc:subfragment:
+    *:
+      sc:type: ifttt:Channel
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".channel"
+      sc:identifier:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: "a"
+          sc:attribute: "href"
+      sc:subfragment:
+        *:
+          sc:type: rdf:Literal
+          sc:relation: ifttt:title
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".channel_title"
+
+_:Trigger:
+  rdf:type: sc:Fragment
+  sc:selector:
+    *:
+      rdf:type: sc:UriPatternSelector
+      rdf:value: "http://ifttt.com/channels/*/triggers/*"
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:type:  ifttt:Trigger
+  sc:subfragment:
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:name
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".ta_title"
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:description
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".description"
+    *:
+      sc:relation: ifttt:hasIngredient
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".show-trigger-action_ingredients_table tr[@class='tr-even']" 
+      sc:type: ifttt:ingredient 
+      sc:subfragment:   
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:name
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td .ingredient_name"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:example
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td"
+              sc:index: "2"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:description
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td"
+              sc:index: "3"
+    *:
+      sc:relation: ifttt:hasIngredient
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".show-trigger-action_ingredients_table tr[@class='']" 
+      sc:type: ifttt:ingredient 
+      sc:subfragment:   
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:name
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td .ingredient_name"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:example
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td"
+              sc:index: "2"
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:description
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: "td"
+              sc:index: "3"
+
+
+_:Action:
+  rdf:type: sc:Fragment
+  sc:selector:
+    *:
+      rdf:type: sc:UriPatternSelector
+      rdf:value: "http://ifttt.com/channels/*/actions/*"
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:type:  ifttt:Action
+  sc:subfragment:
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:name
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".ta_title"
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:description
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".description"
+    *:
+      sc:relation: ifttt:hasField
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".action-field-with-addins" 
+      sc:type: ifttt:field
+      sc:subfragment:   
+        *:
+          sc:type:     rdf:Literal
+          sc:relation: ifttt:name
+          sc:selector:
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".action-field_label"
+
+
+_:Channel:
+  rdf:type: sc:Fragment
+  sc:selector:
+    *:
+      rdf:type: sc:UriPatternSelector
+      rdf:value: "http://ifttt.com/*"
+  sc:identifier:
+    *:
+      rdf:type: sc:BaseUriSelector
+  sc:type:  ifttt:Channel
+  sc:subfragment:
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:description
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".channel-page_description"
+    *:
+      sc:type:     rdf:Literal
+      sc:relation: ifttt:logo
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".channel-page_logo .channel-icon"
+          sc:attribute: "src"
+    *:
+      sc:relation: ifttt:hasTrigger
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".channel-page_triggers div[@class='']"
+      sc:identifier:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: "a"
+          sc:index: "0"
+          sc:attribute: "href"
+    *:
+      sc:relation: ifttt:hasAction
+      sc:selector:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: ".channel-page_actions div[@class='']"
+      sc:identifier:
+        *:
+          rdf:type: sc:CssSelector
+          rdf:value: "a"
+          sc:index: "0"
+          sc:attribute: "href"
+
+
