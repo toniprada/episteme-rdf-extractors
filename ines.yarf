@@ -197,46 +197,34 @@ _:inescompany:
           sc:selector:
             *:
               rdf:type: sc:CssSelector
-              rdf:value: ".field-field-id-competencias .field-item"
-          sc:subfragment:
-            *:
-              sc:type:     rdf:Literal
-              sc:relation: ecos:detail
-              sc:selector:
-                *:
-                  rdf:type: sc:CssSelector
-                  rdf:value: "p"
-                  sc:format: sc:Html
-      sc:subfragment:
-        *:
-          sc:relation: ecos:Skill
-          sc:selector:
+              rdf:value: ".field-field-id-competencias"
             *:
               rdf:type: sc:CssSelector
-              rdf:value: ".group-miebro-perfil-ui3 .field-field-id-tecnologias .field-item"          
+              rdf:value: ".field-field-id-tecnologias" 
+            *:
+              rdf:type: sc:CssSelector
+              rdf:value: ".field-field-id-sectores"                  
           sc:subfragment:
             *:
-              sc:type:     rdf:Literal
-              sc:relation: ecos:detail
+              sc:relation: rdf:Bag
               sc:selector:
                 *:
                   rdf:type: sc:RootSelector
-                  sc:format: sc:Plain
-      sc:subfragment:
-        *:
-          sc:relation: ecos:Skill
-          sc:selector:
-            *:
-              rdf:type: sc:CssSelector
-              rdf:value: ".group-miebro-perfil-ui3 .field-field-id-sectores .field-item"          
-          sc:subfragment:
-            *:
-              sc:type:     rdf:Literal
-              sc:relation: ecos:detail
-              sc:selector:
+              sc:subfragment:
                 *:
-                  rdf:type: sc:RootSelector
-                  sc:format: sc:Plain
+                  sc:relation: rdf:li
+                  sc:selector:
+                    *:
+                      rdf:type: sc:CssSelector
+                      rdf:value: ".field-item"
+                  sc:subfragment:
+                    *:
+                      sc:type:     rdf:Literal
+                      sc:relation: ecos:name
+                      sc:selector:
+                        *:
+                          rdf:type: sc:RootSelector
+                          sc:format: sc:Plain
         *:
           sc:relation: ecos:Plan 
           sc:selector:

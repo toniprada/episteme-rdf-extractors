@@ -201,14 +201,27 @@ _:VulkaCompany:
           sc:selector:
             *:
               rdf:type: sc:CssSelector
-              rdf:value: "#categorias .tags li"
+              rdf:value: "#categorias"
           sc:subfragment:
             *:
-              sc:type:     rdf:Literal
-              sc:relation: ecos:detail
+              sc:relation: rdf:Bag
               sc:selector:
                 *:
                   rdf:type: sc:RootSelector
+              sc:subfragment:
+                *:
+                  sc:relation: rdf:li
+                  sc:selector:
+                    *:
+                      rdf:type: sc:CssSelector
+                      rdf:value: ".tags li"
+                  sc:subfragment:
+                    *:
+                      sc:type:     rdf:Literal
+                      sc:relation: ecos:name
+                      sc:selector:
+                        *:
+                          rdf:type: sc:RootSelector
         *:
           sc:relation: ecos:Plan 
           sc:selector:
