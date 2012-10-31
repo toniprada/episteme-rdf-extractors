@@ -131,6 +131,13 @@ _:VulkaCompany:
                 *:
                   rdf:type: sc:CssSelector
                   rdf:value: "#infoOc i"
+            *:
+              sc:type:     rdf:Literal
+              sc:relation: v:locality
+              sc:selector:
+                *:
+                  rdf:type: sc:XPathSelector
+                  rdf:value: "/html/body/div[3]/ul[1]/li[3]/a[1]"
     *:
       sc:relation: ecos:General
       sc:selector:
