@@ -12,7 +12,7 @@ _:ChannelsIndex:
   sc:selector:
     *:
       rdf:type: sc:UriSelector
-      rdf:value: "http://ifttt.com/channels"
+      rdf:value: "https://ifttt.com/channels"
   sc:subfragment:
     *:
       sc:type: ifttt:Channel
@@ -39,7 +39,7 @@ _:Trigger:
   sc:selector:
     *:
       rdf:type: sc:UriPatternSelector
-      rdf:value: "http://ifttt.com/channels/*/triggers/*"
+      rdf:value: "https://ifttt.com/channels/*/triggers/*"
   sc:identifier:
     *:
       rdf:type: sc:BaseUriSelector
@@ -128,7 +128,7 @@ _:Action:
   sc:selector:
     *:
       rdf:type: sc:UriPatternSelector
-      rdf:value: "http://ifttt.com/channels/*/actions/*"
+      rdf:value: "https://ifttt.com/channels/*/actions/*"
   sc:identifier:
     *:
       rdf:type: sc:BaseUriSelector
@@ -170,7 +170,7 @@ _:Channel:
   sc:selector:
     *:
       rdf:type: sc:UriPatternSelector
-      rdf:value: "http://ifttt.com/*"
+      rdf:value: "https://ifttt.com/*"
   sc:identifier:
     *:
       rdf:type: sc:BaseUriSelector
